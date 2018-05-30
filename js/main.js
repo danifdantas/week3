@@ -16,6 +16,11 @@ console.log("Number of times of visited "+num); // + you can add things or conca
 var teams = ["Knights","Caps","Leafs"]; // array / starts at 0, the first position is 0
 console.log(teams[0]);
 
+var iconSet = document.querySelectorAll(".icons");
+console.log(iconSet);
+
+
+
 function i_am_a_function() {
 console.log("From i_am_a_function()");
 
@@ -23,6 +28,25 @@ console.log("From i_am_a_function()");
 
 window.addEventListener("load",i_am_a_function, false);
 
+function logLoaded(evt) {
+	//console.log("svg loaded");
+	//console.log(evt);
+	var targetSVG = evt.currentTarget.contentDocument;
+	//console.log(targetSVG);
+	var theIcon = targetSVG.querySelector(".mainIcon");
+	//console.log(theIcon);
+	theIcon.addEventListener("click", logClicked, false);
+}
+function logClicked(evt) {
+
+	console.log(evt.currentTarget.id);
+}
+
+for (var i = 0; i<iconSet.length; i++) {
+	//console.log(i);
+	iconSet[i].addEventListener("load", logLoaded, false);
+	
+}
 
 
 
